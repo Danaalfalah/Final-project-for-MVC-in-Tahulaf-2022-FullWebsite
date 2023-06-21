@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.Worktime>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>Index</h1>
+<br /><br />
+<h3>WorkTime</h3>
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Sunday-Thursday open
+            </th>
+            <th>
+               Sunday-Thursday close
+            </th>
+            <th>
+               Friday-Satrday open
+            </th>
+            <th>
+                Friday-Satrday close
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SunThursdayopen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SunThursdayclose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriSatopen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FriSatclose)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

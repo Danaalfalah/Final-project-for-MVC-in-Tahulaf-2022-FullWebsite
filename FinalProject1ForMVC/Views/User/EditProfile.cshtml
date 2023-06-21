@@ -1,0 +1,68 @@
+﻿@model FinalProject1ForMVC.Models.Customer1
+@{ 
+    ViewData["Title"] = "User Profile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<style>
+    body{
+        font-family:cursive;
+    }
+    input {
+        border: 2px solid black;
+        
+    }
+    form{
+        background-color:lightslategray;
+        width:600px;
+        height:450px;
+        padding:30px;
+        align-items:center;
+    }
+</style>
+
+<h1 style="margin:190px"></h1>
+
+
+
+<section class="sectionInfoUser">
+    <div class="container"><h1 style=" margin:20px; color:burlywood"> Edit Profile</h1>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @*<h3 style="text-align:center;">Edit Information</h3>*@
+
+                <form asp-controller="Customer1" asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Customerid" />
+                    <div class="form-group">
+                        <label asp-for="Fname" class="control-label"></label>
+                        <input asp-for="Fname" class="form-control" style=" border: 2px solid black;"/>
+                        <span asp-validation-for="Fname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Lname" class="control-label"></label>
+                        <input asp-for="Lname" class="form-control" />
+                        <span asp-validation-for="Lname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<h1 style="margin:40px"></h1>

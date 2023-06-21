@@ -1,0 +1,50 @@
+﻿@model FinalProject1ForMVC.Models.Categoryproduct1
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Categoryproduct1</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Categoryproductid" />
+            <div class="form-group">
+                <label asp-for="Categoryproductname" class="control-label">Category product name</label>
+                <input asp-for="Categoryproductname" class="form-control" />
+                <span asp-validation-for="Categoryproductname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">image</label>
+                <input asp-for="ImageFile" class="form-control" accept="image/*"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptions" class="control-label"></label>
+                <input asp-for="Descriptions" class="form-control" />
+                <span asp-validation-for="Descriptions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Storeid" class="control-label">store</label>
+                <select asp-for="Storeid" class="form-control" asp-items="ViewBag.Storeid"></select>
+                <span asp-validation-for="Storeid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

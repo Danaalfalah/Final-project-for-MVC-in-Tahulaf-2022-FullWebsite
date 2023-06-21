@@ -1,0 +1,162 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+
+
+<style>
+    * {
+        font-family: cursive;
+    }
+
+    .section1 {
+        margin-top: 50px;
+    }
+
+    .footer {
+        background-color: burlywood;
+        top: + 100;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: block;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+
+
+
+<br>
+<br>
+<section class="section1about" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+
+            <h1 style="text-align: center; margin-bottom: 50px;">Our Story</h1>
+            <br><br>
+            <div class="col-lg-4 col-md-4 col-sm12">
+                <!-- <img src="./images/logo.png" alt=""> -->
+                <h1 style="color: black;"><span style="font-family: cursive ; color: burlywood; margin-left: 20px; font-size: 90px;">D</span>Store</h1>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm12">
+                @*@foreach (var item in Model.Item1)
+            {*@
+                <h5 style="color:red;">@ViewBag.story</h5>
+                @*  *@
+                @*For over 20 years, we've created clothes that make you smile. Whether you're shopping for your clothes or for anyone in your family, we've got hundreds of quality Perfect clothing products for you or someone else.*@
+            </div>
+            <h1 style="margin: 30px;"></h1>
+            <br>
+
+            <!--  -->
+            <br><br>
+            <hr>
+            <h1 style="text-align: center; margin: 50px;">Delivery Information</h1>
+            <div class="col-lg-6 col-md-6 col-sm12">
+                @*@foreach (var item in Model.Item2)
+            {*@
+                <p style="color: black;">
+                    We deliver to all areas across Jordan. The moment you complete your purchase, your order will be processed. We will send you a confirmation email to the email address you have provided, which includes the goods you have ordered and
+                    their cost. <br>*Delivery Options: <br>
+                    <ul>
+                        <li>Home Delivery Standard delivery – Delivery charge is JOD <span style="color:red;">@ViewBag.deliverycharge</span>, or free delivery on orders above JOD <span style="color:red">@ViewBag.deliveryfree</span>.</li>
+                        <li>Delivered within <span style="color:red;">@ViewBag.delivery3 days.</span></li>
+                        <li> Same day delivery - Order before 12PM and receive same day delivery. Delivery charge is JOD 8, or free on orders above JOD 30.</li>
+                    </ul>
+                </p>
+                @*}  *@
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm12">
+                <img src="~/Home/image/imageAboutUs/delivery.svg" alt="" width="480px" height="200px" style="margin-left: 50px;">
+                <!-- <i class="fa-solid fa-truck align-items-center" style="font-size: 400px; text-align: center; margin-left: 40px;"></i> -->
+            </div>
+
+
+            <h1 style="margin: 30px;"></h1>
+            <br><br>
+            <hr>
+            <br><br>
+            <h1 style="text-align: center; margin:20px;">Worktime</h1>
+            <br><br>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="~/Home/image/imageAboutUs/worktime.svg" alt="" width="480px" height="200px" style="margin-top: -60px; border-radius: 90px 90px 90px 90px;">
+            </div>
+            @*@foreach (var item in Model.Item3)
+        {*@
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                you are welcome all days <br> from sunday - thursdaywe open at <span style="color:red"> @ViewBag.sunopen</span>am and close at  <span style="color:red">
+                    @ViewBag.sunclose
+                </span> pm
+                <br> in friday and saturday open at <span style="color:red">@ViewBag.friopen</span> pm and close at <span style="color:red">@ViewBag.friclose</span> pm
+
+            </div>
+            @*}  *@
+
+            <!-- //////////////////////////////////////////////////////////////// -->
+            <!-- <h1 style="margin: 30px;"></h1>
+    <hr>
+    <h1 style="margin: 30px;"></h1>
+    <br>
+    <h1 style="text-align: center;"> Social Media</h1>
+    <br><br>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <br> <br>
+        <a href="https://web.facebook.com/dana.abd.5249" style="margin-left: 30px;"><i class="fa-brands fa-facebook " style="margin-left: 90px;  font-size:50px; color: #DEB887; "></i>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram "style="margin-left: 20px; font-size:50px; color: #DEB887; "></i></a> </li>
+
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <img src="./image/imageAboutUs/social_media.svg " width="400px" height="200px" alt="">
+    </div> -->
+            <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+            <!-- <h1 style="margin: 30px;"></h1>
+    <hr>
+    <h1 style="text-align: center;"> Social Media</h1>
+    <br><br></span>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <img src="./image/imageAboutUs/social_media.svg " width="400px" height="200px" alt="">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <br> <br>
+        <a href="https://web.facebook.com/dana.abd.5249"><i class="fa-brands fa-facebook " style="margin-right: 20px;  font-size:50px; color: #DEB887; "></i>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram "style="margin-right: 20px; font-size:50px; color: #DEB887; "></i></a> </li>
+
+
+    </div> -->
+            <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+<br>
+<br>

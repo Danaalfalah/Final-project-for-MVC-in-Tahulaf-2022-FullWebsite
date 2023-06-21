@@ -1,0 +1,180 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.JoinTable>
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <h1 style="margin-top:190px"></h1>
+            <h1 style="margin:20px">Invoice</h1>
+            <form class="col-md-12" method="post">
+                <div class="site-blocks-table">
+                    <table id="ta" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Image</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-total">Total Price</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <img src=@Url.Content("~/Images/" + item.Product1.Imagepath) alt="Image" class="img-fluid" width="100px;" height="100px;">
+                                    </td>
+                                    <td class="product-name">
+                                        <h2 class="h5 text-black">@item.Product1.Productname</h2>
+                                    </td>
+                                    <td>@item.Product1.Price</td>
+                                    <td>
+                                        @*<div class="input-group mb-3" style="max-width: 120px;">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                            </div>
+                            <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                            </div>
+                        </div>*@
+                                        @item.Orderitem1.Quantityitem
+
+                                    </td>
+                                    <td>@(item.Product1.Price*@item.Orderitem1.Quantityitem)</td>
+                                 
+                                </tr>
+
+
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Total Price</td>
+                                <td>@ViewBag.total </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                            <tr>
+                                <td>Delivery Cost</td>
+                                <td>@ViewBag.deliverycharge </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                            <tr>
+                                <td>Total Order Price</td>
+                                <td>@ViewBag.totalOrder </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                        </tfoot>
+ 
+                    </table>
+
+
+                    </div>
+                </form>
+            </div>
+            <!--- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+            <div class="row">
+
+                <div class="col-md-6 pl-5">
+                    <div class="row justify-content-end">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-12 text-right border-bottom mb-5">
+                                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <span class="text-black">Subtotal</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">@ViewBag.Totalprice</strong>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <span class="text-black">delivery cost</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">@ViewBag.deliverycharge</strong>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Total</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">@ViewBag.deliveryWithTotalPrice</strong>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary btn-lg btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <h1 style="margin:40px"></h1>
+
+
+    <script src="~/cart/js/jquery-3.3.1.min.js"></script>
+    <script src="~/cart/js/jquery-ui.js"></script>
+    <script src="~/cart/js/popper.min.js"></script>
+    <script src="~/cart/js/bootstrap.min.js"></script>
+    <script src="~/cart/js/owl.carousel.min.js"></script>
+    <script src="~/cart/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/cart/js/aos.js"></script>
+
+    <script src="~/cart/js/main.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+    <script>
+        $(document).ready(function () {
+            $('#ta').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pdfHtml5'
+                ]
+            });
+        });
+    </script>

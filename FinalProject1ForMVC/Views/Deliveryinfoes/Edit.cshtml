@@ -1,0 +1,46 @@
+﻿@model FinalProject1ForMVC.Models.Deliveryinfo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>Edit</h1>
+
+<h4>Deliveryinfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Deliverycharge" class="control-label">Delivery charge</label>
+                <input asp-for="Deliverycharge" class="form-control" />
+                <span asp-validation-for="Deliverycharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Deliveryfreeabove" class="control-label">Delivery free above</label>
+                <input asp-for="Deliveryfreeabove" class="form-control" />
+                <span asp-validation-for="Deliveryfreeabove" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numberofdaydelivery" class="control-label">Number of day delivery</label>
+                <input asp-for="Numberofdaydelivery" class="form-control" />
+                <span asp-validation-for="Numberofdaydelivery" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

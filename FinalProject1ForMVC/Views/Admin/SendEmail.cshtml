@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<style>
+ .fff{
+     height:500px;
+     padding:40px;
+     background-color:aqua;
+ }
+   .fff div{
+       padding:5px;
+   }
+    .fff label{
+        width:80px;
+    }
+
+</style>
+
+<h1 style="margin:40px; color:darkblue;">Send email for customer</h1>
+<section>
+    <div class="container">
+        <div class="row">
+            <div>
+
+                <form class="fff" method="post" asp-action="SendEmail" enctype="multipart/form-data">
+
+
+                    <!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="to" class="col-form-label">To :</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="email" name="to" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="subject" class="col-form-label">subject :</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" name="subj" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="body" class="col-form-label">Message :</label>
+                        </div>
+                        <div class="col-auto">
+                            <textarea name="body" id="inputPassword6" rows="10" cols="100" class="form-control" aria-describedby="passwordHelpInline" required></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group form-button " >
+                        <input type="submit"  name="send" id="send" class="form-submit btn btn-warning"  value="Send Message" />
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- JavaScript Bundle with Popper -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+<script>
+
+       after{
+        alert(@ViewBag.alertMessage);
+    }
+    
+</script>

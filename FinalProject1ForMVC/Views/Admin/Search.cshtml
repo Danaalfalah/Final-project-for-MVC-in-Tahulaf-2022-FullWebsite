@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.Order1>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<form asp-action="Search" method="post">
+    <input class="form-control" name="startDate" type="date" />
+    <input class="form-control" name="endDate" type="date" />
+    <button class="btn" type="submit">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            
+            <th>
+               Total price
+                </th>
+            <th>
+               Quantity Item
+            </th>
+            
+            <th>
+                product name
+            </th>
+            <th>
+                Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Totalprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Orderitem.Quantityitem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Orderitem.Product.Productname)
+                   
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datefrom)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+

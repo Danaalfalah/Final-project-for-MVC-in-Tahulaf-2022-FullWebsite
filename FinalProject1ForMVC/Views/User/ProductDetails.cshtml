@@ -1,0 +1,241 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.JoinTAble2>
+
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<link rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Demo styles -->
+<style>
+    html,
+    body {
+        position: relative;
+        height: 100%;
+    }
+
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+    }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+        }
+</style>
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+
+
+
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h1 style="margin-top:150px;"></h1>
+
+
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="swiper-slide">
+                                <img src=@Url.Content("~/images/"+item.Product1.Imagepath) />
+                            </div>
+                        }
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- in same section-->
+
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <h1 style="margin-top:150px;"></h1>
+                <h2 style="margin:20px; color:burlywood">Product Details</h2>
+                <br /><br />
+
+                @foreach (var item in Model)
+                {
+            <form method="post" asp-action="AddToCart">
+
+                <input type="hidden" name="Productid" class="form-control" value=@item.Product1.Productid />
+                <h3>Product ID: @item.Product1.Productid</h3>
+                <h3 style="margin-top:20px;">Product Name: @item.Product1.Productname</h3>
+                <h3 style="color:red">Price: @item.Product1.Price$</h3>
+                <h3>description : @item.Product1.Descriptions</h3>
+                <br />
+                <br />
+
+                <div class="col-lg-3">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" id="decrement" data-field="">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                        <input type="text" id="quantity" name="Quantityitem" class="form-control input-number" style="text-align:center;" value="1" min="1" max="100">
+
+                        <span class="input-group-btn">
+                            <button type="button" class="quantity-right-plus btn btn-success btn-number" id="increment" data-type="plus" data-field="">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <br />
+                <button type="submit" class="btn btn-outline-danger" >Add to cart</button>
+            </form>
+
+                        }
+                    
+                </div>
+        </div>
+    </div>
+</section>
+
+<h1 style="margin:30px"></h1>
+
+<section>
+    <div class="container">
+        <div class="row">
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+    });
+</script>
+
+
+
+
+
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        var quantitiy = 1;
+        $('.quantity-right-plus').click(function (e) {
+
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+
+            // If is not undefined
+    
+            $('#quantity').val(quantity + 1);
+
+
+            // Increment
+
+        });
+
+        $('.quantity-left-minus').click(function (e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+
+            // If is not undefined
+
+            // Increment
+            if (quantity > 1) {
+                $('#quantity').val(quantity - 1);
+            }
+        });
+
+    });
+    </script>

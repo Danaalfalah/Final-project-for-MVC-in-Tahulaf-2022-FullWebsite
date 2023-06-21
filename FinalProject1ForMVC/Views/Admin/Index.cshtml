@@ -1,0 +1,477 @@
+﻿@model Tuple<IEnumerable<FinalProject1ForMVC.Models.Customer1>, IEnumerable<FinalProject1ForMVC.Models.Product1>, IEnumerable<FinalProject1ForMVC.Models.JoinTable>>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">User Count</p>
+                        <h3 class="card-title">
+                            @ViewBag.Users
+                            <small>person</small>
+                        </h3>
+                    </div>
+                    @*<div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">warning</i>
+                                <a href="javascript:;">Get More Space...</a>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <p class="card-category">Product</p>
+                        <h3 class="card-title">@ViewBag.Products</h3>
+                    </div>
+                    @*<div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Last 24 Hours
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">info_outline</i>
+                        </div>
+                        <p class="card-category">Number of order</p>
+                        <h3 class="card-title">@ViewBag.Sales</h3>
+                    </div>
+                    @*<div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">local_offer</i> Tracked from Github
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+            @*<div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <p class="card-category">Followers</p>
+                            <h3 class="card-title">+245</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Just Updated
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+
+
+        <br /><hr /><br /><br />
+
+        <div class="row">
+            <h4 style="color:darkblue" class="display-4">Order for each Month By Line Chart</h4>
+            <div class="col-sm-6">
+
+                @*<h3><a href="~/Home/Index">Back</a></h3>*@
+                <div class="card">
+                    <div class="card-header">
+                        line chart
+                    </div>
+                    <div class="card-body">
+
+                        <canvas class="my-4 h-25" id="myChart"></canvas>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <br /><hr /><br /><br />
+
+
+        <!-- ********** tabels *******************-->
+
+
+
+
+        <div class="row">
+
+          
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <h2 style="color:darkblue">Product Table</h2>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                                <table class="example table table-sm">
+                                    <thead>
+                                        <tr>
+
+                                            <td>Product Name</td>
+                                            <td>Quantity on stock</td>
+                                            <td>Price</td>
+                                            <td>Image</td>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        @foreach (var item in Model.Item2)
+                                        {
+
+                                            <tr>
+                                                <td>@item.Productname</td>
+                                                <td>@item.Quantity</td>
+                                                <td>@item.Price</td>
+                                                <td><img src=@Url.Content("~/Images/"+item.Imagepath) width="150px" height="150px" /></td>
+
+                                            </tr>
+                                        }
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        
+         
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <h2 style="color:darkblue">Customer table</h2>
+                    @*<div class="card-header card-header-warning">
+            <h4 class="card-title">Employees Stats</h4>
+            <p class="card-category">New employees on 15th September, 2016</p>
+        </div>*@
+                    <div class="card-body table-responsive">
+                        <table class="example table table-hover table-sm">
+                            <thead class="text-warning">
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>phone</th>
+                                    <th>Address</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Item1)
+                                {
+                                    <tr>
+
+                                        <td>@item.Fname</td>
+                                        <td>@item.Lname</td>
+                                        <td>
+                                            @item.Phone
+                                            @*<img src=@Url.Content("~/images/" + item.ImagePath)
+                                asp-append-version="true" style="border-radius:20%;" width="100" height="100" />*@
+                                        </td>
+                                        <td>@item.Address</td>
+                                    </tr>
+                                }
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+<!--</div>
+  </div>
+<div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+        <a href="#" data-toggle="dropdown">
+            <i class="fa fa-cog fa-2x"> </i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="header-title"> Sidebar Filters</li>
+            <li class="adjustments-line">
+                <a href="javascript:void(0)" class="switch-trigger active-color">
+                    <div class="badge-colors ml-auto mr-auto">
+                        <span class="badge filter badge-purple" data-color="purple"></span>
+                        <span class="badge filter badge-azure" data-color="azure"></span>
+                        <span class="badge filter badge-green" data-color="green"></span>
+                        <span class="badge filter badge-warning" data-color="orange"></span>
+                        <span class="badge filter badge-danger" data-color="danger"></span>
+                        <span class="badge filter badge-rose active" data-color="rose"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li class="header-title">Images</li>
+            <li class="active">
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img rc="~/assets/img/sidebar-1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img rc="~/assets/img/sidebar-2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img rc="~/assets/img/sidebar-3.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a class="img-holder switch-trigger" href="javascript:void(0)">
+                    <img rc="~/assets/img/sidebar-4.jpg" alt="">
+                </a>
+            </li>
+            <li class="button-container">
+                <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+            </li>-->
+<!-- <li class="header-title">Want more components?</li>
+    <li class="button-container">
+        <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
+          Get the pro version
+        </a>
+    </li> -->
+<!--<li class="button-container">
+                <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+                    View Documentation
+                </a>
+            </li>
+            <li class="button-container github-star">
+                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+            </li>
+            <li class="header-title">Thank you for 95 shares!</li>
+            <li class="button-container text-center">
+                <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+                <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+                <br>
+                <br>
+            </li>
+        </ul>
+    </div>
+</div>-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+        var product = [];//these are all javascript variables
+    var quantity = [];
+    var date = [];
+
+        @foreach(var item in Model.Item3)
+        {
+            @:product.push(@item.Order1.Orderitem.Product.Productname);
+            @:quantity.push(@item.Order1.Orderitem.Quantityitem);
+            @:date.push(@item.Order1.Datefrom);
+
+        }
+
+
+        var Chart2 = document.getElementById('myChart2').getContext('2d');
+        var chart = new Chart(Chart2, {
+            type: 'bar',
+            data: {
+                labels: ['001', '002', '003'],//x axis labels
+                datasets: [{
+                    label: ['33', '45', '84', '938'], //subject y axis
+                    backgroundColor: 'transparent',
+                    borderColor: "#ff0000"
+
+
+                    // here  data reprsent    data: date[],
+
+                }]
+            },
+
+
+                     // Configuration options
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+    );
+
+
+
+    const labels = Utils.months({ count: 7 });
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First Dataset',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+</script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>*@
+@*<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>*@
+<script>
+    $(document).ready(function () {
+        $('.example').DataTable({
+            dom: 'Bfrtip',
+            //buttons: [
+            //    'copyHtml5',
+            //    'excelHtml5',
+            //    'csvHtml5',
+            //    'pdfHtml5'
+            //]
+        });
+    });
+</script>
+
+
+
+<script>
+
+    const product = [];//these are all javascript variables
+    const quantity = [];
+    const date = [];
+
+
+
+
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June'
+            ],
+            datasets: [{
+                label: '# of order',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+<style>
+    /************ start button scroll up *********/
+    .topbtn {
+        position: fixed;
+        bottom: 35px;
+        right: 35px;
+        font-size: 25px;
+        width: 50px;
+        height: px;
+        z-index: 999;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #f9c00c, #f9c00c);
+        border: none;
+        color: #FFF;
+        text-align: center;
+        cursor: pointer;
+        display: none;
+    }
+
+        .topbtn i {
+            line-height: 50px;
+        }
+</style>
+
+
+<!-------------  start button scroll up --------------->
+<div onclick="topFunction()" id="myBtn" class="topbtn wow animate__shakeY" data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="infinite">
+    <i class="fa fa-arrow-up"></i>
+</div>
+<!-------------  End button scroll up --------------->
+<!-- ---------------- button scroll top ----------->
+<script>
+    mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+</script>

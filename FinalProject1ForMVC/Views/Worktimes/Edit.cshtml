@@ -1,0 +1,48 @@
+﻿@model FinalProject1ForMVC.Models.Worktime
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>Edit</h1>
+
+<h4>Worktime</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="SunThursdayopen" class="control-label"> Sunday-Thursday open</label>
+                <input asp-for="SunThursdayopen" class="form-control" />
+                <span asp-validation-for="SunThursdayopen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SunThursdayclose" class="control-label"> Sunday-Thursday close</label>
+                <input asp-for="SunThursdayclose" class="form-control" />
+                <span asp-validation-for="SunThursdayclose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FriSatopen" class="control-label"> Friday-Satrday open</label>
+                <input asp-for="FriSatopen" class="form-control" />
+                <span asp-validation-for="FriSatopen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FriSatclose" class="control-label"> Friday-Satrday close</label>
+                <input asp-for="FriSatclose" class="form-control" />
+                <span asp-validation-for="FriSatclose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

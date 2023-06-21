@@ -1,0 +1,178 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.Socialmedia1>
+
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<style>
+    * {
+        font-family: cursive;
+    }
+
+    .section1 {
+        margin-top: 50px;
+    }
+
+    img1 {
+        position: relative;
+    }
+
+    #img2 {
+        position: absolute;
+        left: 30%;
+        bottom: 25%;
+        transform: translate(-50, -20);
+    }
+
+    @*.footer {
+        background-color: burlywood;
+        top: + 100;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: block;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+    }
+    /* \\\\\\\\\\\\\\\\\\\\\ */
+
+    @import "https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap";
+    body {
+        /* width: 100%; */
+        margin: 0;
+        padding: 0;
+        font-family: open sans;
+        background: #f8f8f8;
+    }*@
+    /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+</style>
+
+<!-- \\\\\\\\\\\\\\\\\\ -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 style="margin:100px"></h1>
+
+
+<section class="sectionmessage">
+    <h1 style="text-align: center;">Send Us a Message</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 clol-sm-12">
+                <img id="img1" src="~/Home/image/imgcontact/undraw_mailbox_re_dvds.svg" alt="" width="300px" height="400px">
+                <img id="img2" src="~/Home/image/imgcontact/undraw_newsletter_re_wrob.svg" width=" 150px" height="200px" alt="">
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+
+
+                <form id="contact-form" method="post" asp-action="ContactUs" role="form" style="height:500px ; width:  500px; background-color: rgb(223, 214, 214); margin: 20px; padding: 30px;">
+
+                    <!-- <div class="messages"></div> -->
+
+                    <div class="controls">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_name">Firstname *</label>
+                                    <input id="form_name" type="text" name="Fname" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_lastname">Lastname *</label>
+                                    <input id="form_lastname" type="text" name="Lname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_email">Email *</label>
+                                    <input id="form_email" type="email" name="Email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_phone">Phone</label>
+                                    <input id="form_phone" type="tel" name="Phone" class="form-control" placeholder="Please enter your phone">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_message">Message *</label>
+                                    <textarea id="form_message" name="Message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success btn-send" value="Send message">
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-muted"><strong>*</strong> These fields are required. Contact form template by <a href="https://bootstrapious.com" target="_blank">Bootstrapious</a>.</p>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<hr>
+<br>
+<section class="section999">
+    <div class="container">
+        <div class="row">
+
+            <h1 style="text-align: center;"> Social Media</h1>
+            <br><br>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <br> <br>
+                @foreach(var item in Model) {
+            <a href=@Url.Content(@item.Socialurl) style="margin-left: 30px;">
+                <i class="@Url.Content(@item.Socialicon)" style="margin-left: 20px;  font-size:50px; color: #DEB887; "></i>
+            </a>
+                }
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img src="~/Home/image/imageAboutUs/social_media.svg " width="400px" height="200px" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<br>
+<br>
+<br>
+
+

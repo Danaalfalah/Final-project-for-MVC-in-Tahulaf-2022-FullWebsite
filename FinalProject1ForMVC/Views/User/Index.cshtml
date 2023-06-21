@@ -1,0 +1,212 @@
+﻿@model Tuple<IEnumerable<FinalProject1ForMVC.Models.Store1>, IEnumerable<FinalProject1ForMVC.Models.Categorystore1>, IEnumerable<FinalProject1ForMVC.Models.Categoryproduct1>, IEnumerable<FinalProject1ForMVC.Models.JoinTAble2>>
+@{
+    ViewData["Title"] = "User Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<h1 style="margin-top: 180px;"></h1>
+
+
+
+
+
+<h1 style="text-align:center; margin:20px; font-family:cursive; color:burlywood;">
+    Welcome to our DStore <span style="color:black;"> @ViewBag.FName @ViewBag.LName </span>
+</h1>
+
+<br />
+<br />
+
+<section class="section2 ">
+    <h1 style="text-align:center ; color:burlywood; margin-top:30px; ">Discover our Product </h1>
+    <div class="container ">
+        <divc class="row ">
+
+
+
+            <div class="content-intro bg-white p-t-77 p-b-133 ">
+                <div class="container ">
+                    <div class="row ">
+
+
+                        @foreach (var item in Model.Item2)
+                        {
+                            <div class="col-md-4 p-t-30 ">
+                                <!-- Block1 -->
+                                <div class="blo1 ">
+                                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom ">
+                                        <a href="# "><img src=@Url.Content("~/Images/" + item.Imagepath) alt="IMG-INTRO " height="200px "></a>
+                                    </div>
+
+                                    <div class="wrap-text-blo1 p-t-35 ">
+                                        <a href="# ">
+                                            <h4 class="txt5 color0-hov trans-0-4 m-b-13 ">
+                                                @item.Categoryname
+                                                @*Perfume*@
+                                            </h4>
+                                        </a>
+
+                                        <p class="m-b-20 ">
+                                            @item.Discription
+                                            @*Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.*@
+                                        </p>
+                                        <form method="post">
+                                            <a asp-controller="User" asp-action="ShowProduct" asp-route-id=@item.Categoryid class="txt4 ">
+                                                Learn More
+                                                <i class="fa fa-long-arrow-right m-l-10 " aria-hidden="true "></i>
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+</section>
+<hr>
+<br>
+
+<h1 style="margin:40px;"></h1>
+<style>
+    import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
+    .search {
+        width: 100%;
+        /*position: relative;*/
+        /*display: inline-block;*/
+    }
+
+    .searchTerm {
+        width: 100%;
+        border: 2px solid #ffa142;
+        border-right: none;
+        /*padding: 5px;*/
+        height: 40px;
+        border-radius: 20px;
+        color: #ffa142;
+    }
+
+        .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+    .searchButton {
+        width: 80px;
+        height: 36px;
+        border: 1px solid #ffa142;
+        background: #ffa142;
+        text-align: center;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+
+
+    /*.sectionS1.container {
+        width: 70%;*/
+    /*position: absolute;*/
+    /*   top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);*/
+    /*}*/
+
+
+</style>
+
+
+<section class="sectionS1">
+    <div class="container">
+        <div class="row">
+            <div class="search" style="margin-top:20px;">
+                <h1 style="color:burlywood; text-align:center">Our Product</h1>
+                @*<button type="submit" class="searchButton">
+            <i class="material-icons" style="text-align:center;">search</i>
+        </button>
+        <input type="text" style="color:#ffa142; font-family:cursive, curive;" class="searchTerm" placeholder="Search Here">*@
+                <br /><br />
+                <form class="form-inline my-2 my-lg-0" method="post" autocomplete="off">
+                    <input class="form-control mr-sm-2  btn-outline-light btn-outline-secondary ui-autocomplete align-items-center" type="search" id="myInput" onkeyup="myFunction()" placeholder="Search" aria-label="Search">
+                    @*<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*@
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<h1 style="margin:40px;"></h1>
+<section class="section">
+    <div class="container">
+
+        <!--<div class="btn">-->
+        <h1></h1>
+
+
+
+        <div class="row">
+            @foreach (var item in Model.Item4)
+            {
+                <div class="card target col-lg-4 col-md-6 col-sm-12" style="width: 18rem; margin-left: 20px; margin-top:30px; background-color: #DCDCDC;">
+                    <img src=@Url.Content("~/Images/" + @item.Product1.Imagepath) class="card-img-top align-items-center" alt="..." width="100%" height="200px" style="margin-top:10px">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Product1.Productname</h5>
+
+                        <p class="card-text">Category:@item.Categoryproduct1.Categoryproductname</p>
+                        <p class="card-text">Store: @item.Store1.Storename</p>
+                        <p class="card-text">@item.Product1.Descriptions</p>
+                        <p class="card-text">@item.Product1.Price$</p>
+
+                        <form method="post" class="btn-group">
+                            <button class="btn btn-outline-primary" asp-controller="User" asp-action="ProductDetails" asp-route-id=@item.Product1.Productid>show product</button>
+                            <button class="btn btn-outline-danger" asp-controller="User" asp-action="ProductDetails" asp-route-id=@item.Product1.Productid>add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<h1 style="margin:150px"></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function myFunction() {
+        var input = document.getElementById("myInput");
+        var filter = input.value.toLowerCase();
+        var nodes = document.getElementsByClassName('target');
+
+        for (i = 0; i < nodes.length; i++) {
+            if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                nodes[i].style.display = "block";
+            } else {
+                nodes[i].style.display = "none";
+            }
+        }
+    }
+</script>

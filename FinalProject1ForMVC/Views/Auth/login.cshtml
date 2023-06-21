@@ -1,0 +1,157 @@
+﻿@model IEnumerable<FinalProject1ForMVC.Models.Userlogin1>;
+
+@{
+    Layout = null;
+    ViewData["Title"] = "login page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    .section5 .container .imglogin img {
+        width: 500px;
+        height: 500px;
+        opacity: 0.9;
+        margin: 80px;
+    }
+    /* E3E3F1 */
+
+    .section5 .container form {
+        background-color: #E3E3F1;
+        /* color of background the form */
+        margin-top: 90px;
+        width: 50%;
+        box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1);
+        height: 350px;
+    }
+
+    .section5 .container .login input {
+        margin-top: 10px;
+        outline: none;
+        border-radius: 8px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border: 2px solid #c4c4c4;
+        width: 60%;
+        height: 40px;
+    }
+
+    .section5 .container .login button {
+        margin-top: 20px;
+    }
+    /*   for i in form */
+    /*  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+    /* so important to move form to center*/
+
+    body {
+        text-align: center;
+    }
+
+    form {
+        display: inline-block;
+    }
+</style>
+
+<body>
+
+
+    <!--  -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <!--              <a class="navbar-brand" href="https://localhost:44373/Home/index" style="color: #548C8C;  font-family:system-ui; font-size:40px;"><span style="color: #BF3B3B; font-family: Courgette; font-size: 50px; ">D</span>Store</a>-->
+            <a class="navbar-brand " href="https://localhost:44373/Home/index" style="color: #548C8C;  font-family:system-ui; font-size:40px; text-decoration:none; ">
+                <h1 style="color: black; text-align:center;"><span style="font-family: cursive ; color: burlywood;">D</span>Store</h1>
+                @*<img src="~/images/logo.png " alt=" " height="90px ">*@
+            </a>
+
+
+
+        </div>
+    </nav>
+
+    <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+
+    <section class="section5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <form asp-action="login" class="login text-center" method="post" id="form">
+                        <div>
+                            <img src="~/images/homeImage/avatar.svg" width="100px" height="100px" style="opacity: 0.7; margin-top: -30px; ">
+                            <span></span>
+                            <hr>
+                        </div>
+
+                        <div class="col-12 position-relative ">
+                            <!-- <label for=" ">Username:</label> -->
+                            <input type="text" name="Username" id="uname " placeholder="Username " required />
+                            <h6 class="text_danger" id="error_email"></h6>
+                        </div>
+                        <div class="col-12 ">
+
+                            <!-- <label for=" ">Password:</label> -->
+                            <input type="password" name="Password" id="paaword " placeholder="Password " required />
+                            <h6 class="text_danger" id="error_email"></h6>
+
+
+                        </div>
+                        <div class="log-12 ">
+                            <button type="submit" class="btn btn-light " style="width:100px ;">Login</button>
+                        </div>
+                        <div class="log-12 ">
+                            <a href="https://localhost:44373/Auth/Register" style="text-decoration: none; margin-top: 60px;">
+                                <h6 style="margin-top: 15px;">Create New Account</h6>
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/jquery-3.4.1.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/jquery.vide.js "></script>
+    <script src="js/typed.min.js "></script>
+    <script src="js/swiper.min.js "></script>
+    <script src="js/isotope.pkgd.min.js "></script>
+    <script src="js/venobox.min.js "></script>
+    <script src="js/mixitup.min.js "></script>
+    <script src="js/wow.min.js "></script>
+    <script src="js/jquery.textillate.js "></script>
+    <script src="js/jquery.lettering.js "></script>
+    <script src="js/mixer2.js "></script>
+    <script src="https://kit.fontawesome.com/d32284fc50.js " crossorigin="anonymous"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js " integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB " crossorigin="anonymous "></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js " integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13 " crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
+
+
